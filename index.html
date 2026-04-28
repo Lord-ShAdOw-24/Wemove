@@ -4,6 +4,17 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>WEMOVE — Solutions en Mouvement</title>
+<link rel="icon" type="image/png" href=.png">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://wemove-proto.netlify.app/">
+<meta property="og:title" content="WEMOVE - Solutions en Mouvement">
+<meta property="og:description" content="We Move Together.">
+<meta property="og:image" content="wemove1.png">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="wemove1.png">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
@@ -41,12 +52,10 @@ body{
   overflow-x:hidden;
   transition:background 0.5s ease, color 0.5s ease;
 }
-/* SCROLLBAR */
 ::-webkit-scrollbar{width:4px;}
 ::-webkit-scrollbar-track{background:transparent;}
 ::-webkit-scrollbar-thumb{background:var(--grad);border-radius:10px;}
 
-/* CANVAS BACKGROUND */
 #cosmos-canvas{
   position:fixed;top:0;left:0;width:100%;height:100%;
   z-index:0;pointer-events:none;opacity:1;
@@ -54,7 +63,6 @@ body{
 }
 [data-theme="light"] #cosmos-canvas{opacity:0.25;}
 
-/* PAGES */
 .page{
   display:none;min-height:100vh;
   position:relative;z-index:1;
@@ -63,56 +71,94 @@ body{
 .page.active{display:block;}
 @keyframes fadeIn{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:none;}}
 
-/* NAV */
-nav{
-  position:fixed;top:0;left:0;right:0;z-index:1000;
-  padding:0 5vw;height:72px;
-  display:flex;align-items:center;justify-content:space-between;
-  background:rgba(31,15,20,0.7);
-  backdrop-filter:blur(24px) saturate(160%);
-  border-bottom:1px solid var(--glass-border);
-  transition:background 0.5s;
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 5vw;
+    background: rgba(31, 15, 20, 0.85);
+    backdrop-filter: blur(24px) saturate(160%);
+    border-bottom: 1px solid var(--glass-border);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    transition: all 0.3s ease;
 }
-[data-theme="light"] nav{background:rgba(244,240,255,0.8);}
-.nav-logo{
-  display:flex;align-items:center;gap:12px;cursor:pointer;
-  text-decoration:none;
-}
-.nav-logo-icon{
-  width:42px;height:42px;
-  background:var(--grad);
-  border-radius:12px;
-  display:flex;align-items:center;justify-content:center;
-  font-family:'Syne',sans-serif;
-  font-weight:800;font-size:15px;color:#fff;
-  position:relative;overflow:hidden;
-  box-shadow:0 0 20px rgba(109,40,217,0.5);
-}
-.nav-logo-icon svg{width:26px;height:26px;}
-.nav-logo-name{
-  font-family:'Syne',sans-serif;
-  font-size:1.25rem;font-weight:800;
-  letter-spacing:-0.02em;
-  background:var(--grad2);
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
-}
-.nav-logo-name span{
-  background:none;-webkit-text-fill-color:var(--text-light);
-}
-.nav-links{
-  display:flex;align-items:center;gap:2rem;
-  list-style:none;
-}
-.nav-links a{
-  font-size:0.875rem;font-weight:500;
-  color:var(--text-muted);text-decoration:none;
-  transition:var(--transition);
-  cursor:pointer;
-}
-.nav-links a:hover,.nav-links a.active{color:var(--text-light);}
-.nav-actions{display:flex;align-items:center;gap:12px;}
 
-/* BUTTONS */
+[data-theme="light"] nav {
+    background: rgba(244, 240, 255, 0.9);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.nav-logo-icon {
+    width: 42px;
+    height: 42px;
+    background: var(--grad);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    color: #fff;
+    box-shadow: 0 0 20px rgba(109, 40, 217, 0.4);
+}
+
+.nav-logo-name {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 800;
+    background: var(--grad2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    list-style: none;
+}
+
+.nav-links a {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: var(--transition);
+    cursor: pointer;
+    padding: 8px 16px;
+    border-radius: 50px;
+}
+
+.nav-links a:hover, .nav-links a.active {
+    color: var(--text-light);
+    background: var(--glass);
+}
+
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+@media (max-width: 768px) {
+    .nav-links { display: none; }
+    .hamburger { display: block; }
+}
+
 .btn{
   display:inline-flex;align-items:center;gap:8px;
   padding:10px 24px;border-radius:50px;
@@ -134,7 +180,6 @@ nav{
 .btn-glass:hover{background:rgba(255,255,255,0.08);}
 .btn-sm{padding:7px 16px;font-size:0.8rem;}
 
-/* LANG / THEME TOGGLE */
 .lang-btn{
   background:var(--glass);border:1px solid var(--glass-border);
   color:var(--text-light);padding:6px 14px;border-radius:50px;
@@ -160,7 +205,6 @@ nav{
   font-size:1.4rem;cursor:pointer;padding:4px;
 }
 
-/* MOBILE MENU */
 .mobile-menu{
   position:fixed;inset:0;z-index:999;
   background:rgba(31,15,20,0.97);
@@ -185,7 +229,6 @@ nav{
   font-size:2rem;cursor:pointer;
 }
 
-/* SECTIONS SHARED */
 .section{padding:100px 5vw 60px;}
 .section-label{
   font-family:'Syne',sans-serif;font-size:0.75rem;font-weight:700;
@@ -206,7 +249,6 @@ nav{
   background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;
 }
 
-/* GLASS CARD */
 .card{
   background:var(--bg-card);
   border:1px solid var(--glass-border);
@@ -220,12 +262,10 @@ nav{
   box-shadow:0 20px 60px rgba(109,40,217,0.12);
 }
 
-/* GRID */
 .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
 .grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:32px;align-items:center;}
 .grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
 
-/* HERO */
 .hero{
   min-height:100vh;display:flex;flex-direction:column;
   justify-content:center;padding:120px 5vw 80px;
@@ -271,7 +311,6 @@ nav{
 }
 @keyframes scrollLine{to{left:100%;}}
 
-/* TICKER */
 .ticker-wrap{
   overflow:hidden;padding:20px 0;
   border-top:1px solid var(--glass-border);
@@ -294,7 +333,6 @@ nav{
   width:5px;height:5px;border-radius:50%;background:var(--pink);
 }
 
-/* SERVICES */
 .service-card{
   padding:36px 32px;position:relative;
 }
@@ -322,7 +360,6 @@ nav{
 .service-arrow svg{transition:var(--transition);}
 .service-card:hover .service-arrow svg{transform:translateX(4px);}
 
-/* STATS */
 .stats-row{
   display:flex;gap:0;
   border:1px solid var(--glass-border);border-radius:24px;
@@ -341,7 +378,6 @@ nav{
 }
 .stat-label{font-size:0.82rem;color:var(--text-muted);margin-top:6px;display:block;}
 
-/* ABOUT */
 .about-visual{
   position:relative;height:400px;border-radius:24px;overflow:hidden;
 }
@@ -367,7 +403,6 @@ nav{
 .value-item h5{font-family:'Syne',sans-serif;font-weight:700;margin-bottom:4px;}
 .value-item p{font-size:0.85rem;color:var(--text-muted);}
 
-/* TEAM */
 .team-card{
   padding:32px 24px;text-align:center;
 }
@@ -390,7 +425,6 @@ nav{
   background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;
 }
 
-/* PROJECTS / PORTFOLIO */
 .project-card{
   border-radius:24px;overflow:hidden;
   position:relative;height:320px;
@@ -420,7 +454,6 @@ nav{
 }
 .project-card p{font-size:0.83rem;color:var(--text-muted);margin-top:6px;}
 
-/* SLIDESHOW */
 .slideshow{position:relative;overflow:hidden;border-radius:28px;height:480px;}
 .slide{
   position:absolute;inset:0;
@@ -443,7 +476,6 @@ nav{
   background-size:100%;
 }
 
-/* PROCESS */
 .process-steps{
   display:flex;flex-direction:column;gap:0;
   border:1px solid var(--glass-border);border-radius:24px;
@@ -500,7 +532,6 @@ nav{
 .contact-item h5{font-family:'Syne',sans-serif;font-weight:700;margin-bottom:4px;}
 .contact-item p{font-size:0.85rem;color:var(--text-muted);}
 
-/* FOOTER */
 footer{
   background:var(--bg-card);
   border-top:1px solid var(--glass-border);
@@ -567,7 +598,6 @@ footer{
 }
 .social-link:hover{background:var(--grad);color:#fff;border-color:transparent;}
 
-/* LEGAL PAGES */
 .legal-content{
   max-width:780px;margin:0 auto;padding:120px 5vw 80px;
 }
@@ -589,7 +619,6 @@ footer{
 .legal-content ul{padding-left:20px;}
 .legal-content li{margin-bottom:8px;}
 
-/* COOKIE BANNER */
 .cookie-banner{
   position:fixed;bottom:24px;left:50%;transform:translateX(-50%);
   z-index:2000;width:min(640px,90vw);
@@ -607,7 +636,6 @@ footer{
 .cookie-text a{color:var(--pink);cursor:pointer;}
 .cookie-actions{display:flex;gap:10px;flex-shrink:0;}
 
-/* TESTIMONIALS */
 .testimonial-card{padding:32px;position:relative;}
 .testimonial-quote{
   font-size:2.5rem;font-family:'Syne',sans-serif;font-weight:800;
@@ -624,7 +652,6 @@ footer{
 .testimonial-author strong{font-family:'Syne',sans-serif;font-size:0.9rem;font-weight:700;display:block;}
 .testimonial-author span{font-size:0.78rem;color:var(--text-muted);}
 
-/* PAGE HEADER */
 .page-header{
   padding:140px 5vw 60px;text-align:center;
   position:relative;
@@ -636,7 +663,6 @@ footer{
   background:var(--grad);border-radius:2px;
 }
 
-/* NOTIFICATION */
 .notif{
   position:fixed;top:90px;right:24px;z-index:3000;
   background:rgba(28,28,34,0.95);backdrop-filter:blur(20px);
@@ -650,7 +676,6 @@ footer{
 .notif-icon{font-size:1.2rem;}
 .notif p{font-size:0.82rem;color:var(--text-light);line-height:1.4;}
 
-/* RESPONSIVE */
 @media(max-width:1024px){
   .grid-4{grid-template-columns:repeat(2,1fr);}
   .footer-grid{grid-template-columns:1fr 1fr;}
@@ -675,7 +700,6 @@ footer{
   .cookie-banner{flex-direction:column;}
 }
 
-/* HOVER NAV UNDERLINE */
 .nav-links a{position:relative;}
 .nav-links a::after{
   content:'';position:absolute;bottom:-4px;left:0;right:0;
@@ -684,7 +708,6 @@ footer{
 }
 .nav-links a:hover::after,.nav-links a.active::after{transform:scaleX(1);}
 
-/* ACCENT LINE */
 .accent-line{
   display:inline-flex;align-items:center;gap:12px;
 }
@@ -693,13 +716,11 @@ footer{
   background:var(--grad);border-radius:1px;
 }
 
-/* GRADIENT ORB */
 .orb{
   position:absolute;border-radius:50%;
   filter:blur(120px);opacity:0.18;pointer-events:none;
 }
 
-/* CLIENTS LOGOS */
 .clients-row{
   display:flex;gap:48px;align-items:center;justify-content:center;
   flex-wrap:wrap;padding:48px 0;
@@ -719,7 +740,6 @@ footer{
   background:var(--grad);
 }
 
-/* FAQ */
 .faq-item{
   border-bottom:1px solid var(--glass-border);
   padding:24px 0;
@@ -743,7 +763,6 @@ footer{
 }
 .faq-item.open .faq-a{max-height:200px;padding-top:14px;}
 
-/* PRICING */
 .pricing-card{
   padding:40px 32px;text-align:center;position:relative;
 }
@@ -772,13 +791,12 @@ footer{
 .pricing-features li::before{
   content:'✓';color:var(--pink);font-weight:700;flex-shrink:0;
 }
-  /* Empêcher le site de déborder sur mobile */
+ 
 html, body {
     overflow-x: hidden;
     width: 100%;
 }
 
-/* Cacher le hamburger sur PC */
 .hamburger {
     display: none;
     background: none;
@@ -789,32 +807,29 @@ html, body {
     margin-left: 10px;
 }
 
-/* Responsivité pour Mobile et Tablette */
 @media screen and (max-width: 992px) {
     .hamburger {
-        display: block; /* Afficher le bouton hamburger */
+        display: block; 
     }
 
     .cta-btn {
-        display: none; /* Cacher le bouton "Démarrer" sur mobile pour faire de la place */
+        display: none; 
     }
 
-    /* Design du menu déroulant pour qu'il respecte ton thème */
     .nav-links {
         display: none; 
         flex-direction: column;
         position: absolute;
-        top: 80px; /* Ajuste si ta barre de navigation est plus haute */
+        top: 80px; 
         left: 0;
         width: 100%;
-        background-color: var(--bg-card); /* Utilise la couleur de ton thème */
+        background-color: var(--bg-card); 
         padding: 20px 0;
         text-align: center;
         box-shadow: 0 4px 15px rgba(0,0,0,0.5);
         z-index: 1000;
     }
 
-    /* Classe qui s'active quand on ouvre le menu */
     .nav-links.active {
         display: flex;
     }
@@ -878,7 +893,7 @@ html, body {
         color: var(--white);
     }
 }
-/* --- LOGO ET LIGNE NEON --- */
+
 .logo-wrapper {
     position: relative;
     display: flex;
@@ -950,7 +965,6 @@ html, body {
 }
 
 
-/* --- ALIGNEMENT ACTIONS ET MOBILE --- */
 .nav-actions {
     display: flex;
     align-items: center;
@@ -975,14 +989,13 @@ html, body {
         flex: 1;
     }
 
-    /* Superposition verticale des petits boutons pour gagner de la place si besoin */
     .mobile-controls {
         flex-direction: column;
         gap: 2px;
     }
 
     .lang-btn, .theme-toggle {
-        transform: scale(0.8); /* Réduction légère pour fluidité */
+        transform: scale(0.8); 
         margin: 0;
     }
 
@@ -1065,8 +1078,119 @@ html, body {
 [data-theme="light"] .btn-outline:hover {
     background: rgba(0, 0, 0, 0.05);
 }
+@media (min-width: 769px) {
+nav {
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 0 5%;
+height: 72px;
+}
+#navLinks {
+display: flex !important;
+position: static !important;
+flex-direction: row !important;
+background: transparent !important;
+padding: 0 !important;
+margin: 0 !important;
+gap: 6px !important;
+height: auto !important;
+width: auto !important;
+opacity: 1 !important;
+transform: none !important;
+visibility: visible !important;
+box-shadow: none !important;
+border: none !important;
+backdrop-filter: none !important;
+justify-content: center !important;
+flex: 1 !important;
+}
+#navLinks a {
+display: inline-block;
+padding: 8px 18px;
+border-radius: 50px;
+background: rgba(255,255,255,0.05);
+border: 1px solid rgba(255,255,255,0.08);
+color: var(--text-light);
+font-size: 0.88rem;
+white-space: nowrap;
+transition: all 0.3s ease;
+}
+#navLinks a:hover {
+background: var(--grad2);
+color: #fff;
+transform: translateY(-2px);
+border-color: transparent;
+box-shadow: 0 6px 18px rgba(109,40,217,0.25);
+}
+.hamburger { display: none !important; }
+.hamburger-wrapper { display: none !important; }
+}
 
+@media (min-width: 1024px) {
+nav {
+display: flex !important;
+justify-content: space-between !important;
+align-items: center !important;
+padding: 0 6% !important;
+height: 72px !important;
+position: fixed !important;
+top: 0 !important;
+left: 0 !important;
+width: 100% !important;
+z-index: 1000 !important;
+background: rgba(31,15,20,0.88) !important;
+backdrop-filter: blur(28px) saturate(180%) !important;
+border-bottom: 1px solid rgba(255,255,255,0.07) !important;
+box-shadow: 0 4px 24px rgba(0,0,0,0.3) !important;
+}
+#navLinks {
+display: flex !important;
+position: static !important;
+flex-direction: row !important;
+background: transparent !important;
+padding: 0 !important;
+margin: 0 !important;
+gap: 6px !important;
+height: auto !important;
+width: auto !important;
+list-style: none !important;
+opacity: 1 !important;
+transform: none !important;
+visibility: visible !important;
+box-shadow: none !important;
+border: none !important;
+backdrop-filter: none !important;
+flex: 1 !important;
+justify-content: center !important;
+}
+#navLinks li { margin: 0; padding: 0; }
+#navLinks a {
+display: inline-block;
+padding: 8px 20px;
+border-radius: 50px;
+color: var(--text-light);
+font-weight: 500;
+font-size: 0.9rem;
+text-decoration: none;
+transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+border: 1px solid rgba(255,255,255,0.08);
+background: rgba(255,255,255,0.05);
+white-space: nowrap;
+}
+#navLinks a:hover {
+background: var(--grad2);
+color: #fff;
+transform: translateY(-2px);
+box-shadow: 0 8px 20px rgba(109,40,217,0.28);
+border-color: transparent;
+}
+.hamburger { display: none !important; }
+.hamburger-wrapper { display: none !important; }
+.menu-toggle { display: none !important; }
+}
 
+body { padding-top: 72px; }
 </style>
 </head>
 <body>
@@ -1132,7 +1256,6 @@ html, body {
   <a onclick="navigate('contact');toggleMenu()" data-i18n="navContact">Contact</a>
 </div>
 
-<!-- ==================== PAGE: HOME ==================== -->
 <div class="page active" id="page-home">
   <div class="hero">
     <div class="orb" style="width:600px;height:600px;background:radial-gradient(var(--purple),transparent);top:-100px;right:-200px;"></div>
@@ -1269,7 +1392,6 @@ html, body {
   </div>
 </div>
 
-<!-- ==================== PAGE: SERVICES ==================== -->
 <div class="page" id="page-services">
   <div class="page-header">
     <span class="section-label" data-i18n="servLabel">Nos Services</span>
@@ -1345,7 +1467,6 @@ html, body {
   </div>
 </div>
 
-<!-- ==================== PAGE: ABOUT ==================== -->
 <div class="page" id="page-about">
   <div class="page-header">
     <span class="section-label" data-i18n="aboutLabel">À Propos</span>
@@ -1398,7 +1519,6 @@ html, body {
   </div>
 </div>
 
-<!-- ==================== PAGE: PORTFOLIO ==================== -->
 <div class="page" id="page-portfolio">
   <div class="page-header">
     <span class="section-label" data-i18n="portLabel">Portfolio</span>
@@ -1462,7 +1582,7 @@ html, body {
   </div>
 </div>
 
-<!-- ==================== PAGE: CONTACT ==================== -->
+
 <div class="page" id="page-contact">
   <div class="page-header">
     <span class="section-label" data-i18n="navContact">Contact</span>
@@ -1508,7 +1628,6 @@ html, body {
   </div>
 </div>
 
-<!-- ==================== PAGE: COOKIES ==================== -->
 <div class="page" id="page-cookies">
   <div class="legal-content">
     <h1 data-i18n="cookiePageTitle">Politique de Cookies</h1>
@@ -1528,7 +1647,6 @@ html, body {
   </div>
 </div>
 
-<!-- ==================== PAGE: PRIVACY ==================== -->
 <div class="page" id="page-privacy">
   <div class="legal-content">
     <h1 data-i18n="privTitle">Politique de Confidentialité</h1>
@@ -1544,7 +1662,6 @@ html, body {
   </div>
 </div>
 
-<!-- ==================== PAGE: TERMS ==================== -->
 <div class="page" id="page-terms">
   <div class="legal-content">
     <h1 data-i18n="termsTitle">Conditions Générales d'Utilisation</h1>
@@ -1562,7 +1679,6 @@ html, body {
   </div>
 </div>
 
-<!-- FOOTER -->
 <footer id="mainFooter">
   <div class="footer-grid">
     <div class="footer-brand">
@@ -1616,9 +1732,7 @@ html, body {
 </footer>
 
 <script>
-// ============================================================
-// TRANSLATIONS
-// ============================================================
+
 const i18n = {
   fr: {
     navHome:"Accueil",navServices:"Services",navAbout:"À Propos",navPortfolio:"Projets",navContact:"Contact",navCTA:"Démarrer un projet",
@@ -1813,9 +1927,6 @@ function applyLang(l){
 }
 function toggleLang(){applyLang(lang === 'fr' ? 'en' : 'fr');}
 
-// ============================================================
-// ROUTING
-// ============================================================
 const pages = ['home','services','about','portfolio','contact','cookies','privacy','terms'];
 function navigate(page){
   pages.forEach(p => {
@@ -1836,9 +1947,6 @@ function navigate(page){
   footer.style.display = 'block';
 }
 
-// ============================================================
-// THEME
-// ============================================================
 function toggleTheme(){
   const html = document.documentElement;
   const isDark = html.getAttribute('data-theme') === 'dark';
@@ -1846,16 +1954,10 @@ function toggleTheme(){
   document.querySelector('.theme-dot').textContent = isDark ? '🌙' : '☀️';
 }
 
-// ============================================================
-// MOBILE MENU
-// ============================================================
 function toggleMenu(){
   document.getElementById('mobileMenu').classList.toggle('open');
 }
 
-// ============================================================
-// COSMOS CANVAS
-// ============================================================
 (function(){
   const canvas = document.getElementById('cosmos-canvas');
   const ctx = canvas.getContext('2d');
@@ -1890,7 +1992,6 @@ function toggleMenu(){
     }
   }
 
-  // Comet/streak
   class Comet {
     constructor(){this.reset();}
     reset(){
@@ -1936,7 +2037,6 @@ function toggleMenu(){
   for(let i=0;i<200;i++) particles.push(new Particle());
   const comets = [new Comet(), new Comet(), new Comet()];
 
-  // Nebula orbs
   const nebulae = [
     {x:0.2,y:0.15,r:300,c:'#6D28D9',a:0.04},
     {x:0.8,y:0.3,r:250,c:'#EC4999',a:0.035},
@@ -1969,9 +2069,6 @@ function toggleMenu(){
   loop();
 })();
 
-// ============================================================
-// ABOUT MINI CANVAS
-// ============================================================
 function initAboutCanvas(id){
   const canvas = document.getElementById(id);
   if(!canvas) return;
@@ -2001,9 +2098,6 @@ function initAboutCanvas(id){
   draw();
 }
 
-// ============================================================
-// STATS COUNTER
-// ============================================================
 function animateCounters(){
   document.querySelectorAll('[data-count]').forEach(el => {
     const target = parseInt(el.getAttribute('data-count'));
@@ -2017,9 +2111,6 @@ function animateCounters(){
   });
 }
 
-// ============================================================
-// TICKER
-// ============================================================
 function initTicker(){
   const items = ['Stratégie','Branding','Développement','IA & Data','Marketing','Incubation','Technologie','Performance','Innovation','Mouvement'];
   const ticker = document.getElementById('ticker');
@@ -2028,9 +2119,6 @@ function initTicker(){
   ticker.innerHTML = html;
 }
 
-// ============================================================
-// SLIDESHOW
-// ============================================================
 let currentSlide = 0, slideshowInterval;
 function initSlideshow(){
   const slides = document.querySelectorAll('#mainSlideshow .slide');
@@ -2055,9 +2143,6 @@ function goToSlide(n){
   dots[currentSlide]?.classList.add('active');
 }
 
-// ============================================================
-// FAQ
-// ============================================================
 function toggleFaq(el){
   const item = el.closest('.faq-item');
   const wasOpen = item.classList.contains('open');
@@ -2065,9 +2150,6 @@ function toggleFaq(el){
   if(!wasOpen) item.classList.add('open');
 }
 
-// ============================================================
-// FORM
-// ============================================================
 function submitForm(){
   const name = document.getElementById('f-name')?.value;
   const email = document.getElementById('f-email')?.value;
@@ -2083,23 +2165,14 @@ function showNotif(msg){
   setTimeout(() => n.classList.remove('show'), 4000);
 }
 
-// ============================================================
-// NEWSLETTER
-// ============================================================
 function subscribeNewsletter(){
   const v = document.getElementById('newsEmail')?.value;
   if(v){ showNotif('✅ Merci pour votre inscription !'); document.getElementById('newsEmail').value=''; }
 }
 
-// ============================================================
-// COOKIES
-// ============================================================
 function acceptCookies(){ document.getElementById('cookieBanner').classList.add('hidden'); }
 function rejectCookies(){ document.getElementById('cookieBanner').classList.add('hidden'); }
 
-// ============================================================
-// INTERSECTION OBSERVER for animation
-// ============================================================
 const observer = new IntersectionObserver(entries => {
   entries.forEach(e => {
     if(e.isIntersecting){
@@ -2118,9 +2191,6 @@ function observeCards(){
   });
 }
 
-// ============================================================
-// INIT
-// ============================================================
 window.addEventListener('DOMContentLoaded', () => {
   initTicker();
   initSlideshow();
@@ -2131,7 +2201,7 @@ window.addEventListener('DOMContentLoaded', () => {
   setTimeout(observeCards, 100);
   navigate('home');
 });
-  // Fonction pour ouvrir/fermer le menu hamburger
+
 function toggleMenu() {
     const navLinks = document.getElementById('navLinks');
     if(navLinks) {
@@ -2139,7 +2209,6 @@ function toggleMenu() {
     }
 }
 
-// Fonction pour fermer le menu automatiquement quand on clique sur un lien
 function closeMenu() {
     const navLinks = document.getElementById('navLinks');
     if(navLinks && navLinks.classList.contains('active')) {
